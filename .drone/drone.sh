@@ -17,12 +17,7 @@ export CC=${CC:-gcc}
 export PATH=~/.local/bin:/usr/local/bin:$PATH
 
 if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
-  echo Installing test locales for ${TRAVIS_OS_NAME} ...
-  apt-get update
-  apt-get install -y apt-file locales
-  apt-file update
-  apt-file find /usr/bin/locale-gen
-  apt-file find locale-gen
+  echo Installing locales for ${TRAVIS_OS_NAME} ...
   sudo /usr/sbin/locale-gen fr_FR
   sudo /usr/sbin/locale-gen en_GB
   sudo locale -a
