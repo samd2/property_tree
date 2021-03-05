@@ -119,9 +119,9 @@ jobs:
 
       - name: Setup Boost
         run: |
-          locale-gen fr_FR
-          locale-gen en_GB
-          locale -a
+          sudo locale-gen fr_FR
+          sudo locale-gen en_GB
+          sudo locale -a
           echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
           LIBRARY=${GITHUB_REPOSITORY#*/}
           echo LIBRARY: $LIBRARY
