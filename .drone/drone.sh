@@ -19,7 +19,7 @@ export PATH=~/.local/bin:/usr/local/bin:$PATH
 if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
   echo Installing test locales for ${TRAVIS_OS_NAME} ...
   apt-get update
-  apt-get install -y apt-file locale
+  apt-get install -y apt-file locales
   apt-file find /usr/bin/locale-gen
   apt-file find locale-gen
   sudo /usr/bin/locale-gen fr_FR
