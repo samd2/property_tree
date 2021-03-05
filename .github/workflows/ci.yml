@@ -121,7 +121,7 @@ jobs:
         run: |
           sudo locale-gen fr_FR
           sudo locale-gen en_GB
-          sudo locale -a
+          sudo /usr/sbin/locale-gen
           echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
           LIBRARY=${GITHUB_REPOSITORY#*/}
           echo LIBRARY: $LIBRARY
