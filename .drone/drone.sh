@@ -113,8 +113,10 @@ export BOOST_CI_SRC_FOLDER=$(pwd)
 echo '==================================> SCRIPT'
 
 if  [ -n "${COVERITY_SCAN_NOTIFICATION_EMAIL}" -a \( "$TRAVIS_BRANCH" = "develop" -o "$TRAVIS_BRANCH" = "master" \) -a \("$DRONE_BUILD_EVENT" = "push" -o "$DRONE_BUILD_EVENT" = "cron" \) ] ; then
-cd $BOOST_ROOT/libs/$SELF
-ci/travis/coverity.sh
+    cd $BOOST_ROOT/libs/$SELF
+    ci/travis/coverity.sh
 fi
+
+echo "Reached this point"
 
 fi
