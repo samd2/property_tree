@@ -28,11 +28,12 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     unset -f cd
 fi
 
-if ! [[ "$TRAVIS_OS_NAME" =~ "[Ll]inux" ]]; then
-  sudo ls -al /usr/sbin/l*
+if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
+  echo Installing test locales for ${TRAVIS_OS_NAME} ...
   sudo locale-gen fr_FR
   sudo locale-gen en_GB
   sudo locale -a
+  echo ...done
 fi
 
 export SELF=`basename $REPO_NAME`
