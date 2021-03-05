@@ -16,6 +16,18 @@ export USER=$(whoami)
 export CC=${CC:-gcc}
 export PATH=~/.local/bin:/usr/local/bin:$PATH
 
+if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
+  echo Installing test locales for ${TRAVIS_OS_NAME} ...
+  apt-get update
+  apt-get install -y apt-file locale
+  apt-file find /usr/bin/locale-gen
+  apt-file find locale-gen
+  sudo /usr/bin/locale-gen fr_FR
+  sudo /usr/bin/locale-gen en_GB
+  sudo locale -a
+  echo ...done with locales
+fi
+
 if [ "$DRONE_JOB_BUILDTYPE" == "boost" ]; then
 
 echo '==================================> INSTALL'
@@ -26,14 +38,6 @@ rm -rf boost-ci-cloned
 
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     unset -f cd
-fi
-
-if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
-  echo Installing test locales for ${TRAVIS_OS_NAME} ...
-  sudo locale-gen fr_FR
-  sudo locale-gen en_GB
-  sudo locale -a
-  echo ...done
 fi
 
 export SELF=`basename $REPO_NAME`
