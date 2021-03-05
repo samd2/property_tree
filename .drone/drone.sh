@@ -28,6 +28,13 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     unset -f cd
 fi
 
+if ! [[ "$TRAVIS_OS_NAME" =~ "[Ll]inux" ]]; then
+  sudo ls -al /usr/sbin/l*
+  sudo locale-gen fr_FR
+  sudo locale-gen en_GB
+  sudo locale -a
+fi
+
 export SELF=`basename $REPO_NAME`
 export BOOST_CI_TARGET_BRANCH="$TRAVIS_BRANCH"
 export BOOST_CI_SRC_FOLDER=$(pwd)
