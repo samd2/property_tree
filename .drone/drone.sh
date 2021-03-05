@@ -23,8 +23,8 @@ if [[ ${TRAVIS_OS_NAME} =~ [Ll]inux ]]; then
   apt-file update
   apt-file find /usr/bin/locale-gen
   apt-file find locale-gen
-  sudo /usr/bin/locale-gen fr_FR
-  sudo /usr/bin/locale-gen en_GB
+  sudo /usr/sbin/locale-gen fr_FR
+  sudo /usr/sbin/locale-gen en_GB
   sudo locale -a
   echo ...done with locales
 fi
